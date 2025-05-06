@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Menu</title>
+  <style>
+    .menu-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Food Menu</h2>
+  <div id="menu-list"></div>
+
+  <script>
+    const foodMenu = [
+      { name: 'Bruschetta', description: 'Grilled bread with tomato and basil', price: 6.5, category: 'Appetizer' },
+      { name: 'Caesar Salad', description: 'Romaine, croutons, parmesan', price: 8.0, category: 'Appetizer' },
+      { name: 'Margherita Pizza', description: 'Tomato, mozzarella, basil', price: 12.0, category: 'Main' },
+      { name: 'Grilled Salmon', description: 'Served with lemon butter sauce', price: 18.0, category: 'Main' },
+      { name: 'Tiramisu', description: 'Espresso-soaked ladyfingers, mascarpone', price: 7.0, category: 'Dessert' },
+      { name: 'Lemonade', description: 'Freshly squeezed lemons', price: 3.5, category: 'Beverage' },
+    ];
+
+    const menuListElement = document.getElementById('menu-list');
+
+    foodMenu.forEach(item => {
+      const itemElement = document.createElement('div');
+      itemElement.classList.add('menu-item');
+
+      itemElement.innerHTML = `
+        <h3>${item.name} - $${item.price.toFixed(2)}</h3>
+        <p><em>${item.category}</em>: ${item.description}</p>
+      `;
+
+      menuListElement.appendChild(itemElement);
+    });
+  </script>
+
+</body>
+</html>
