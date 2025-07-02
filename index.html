@@ -1,134 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Food Menu</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 2rem;
-      color: #333;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Menu</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 2rem;
+        color: #333;
+      }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      color: #444;
-    }
+      h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #444;
+      }
 
-    #menu-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
+      #menu-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+      }
 
-    .menu-item {
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      width: 280px;
-      transition: transform 0.2s ease;
-    }
+      .menu-item {
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 280px;
+        transition: transform 0.2s ease;
+      }
 
-    .menu-item:hover {
-      transform: translateY(-5px);
-    }
+      .menu-item:hover {
+        transform: translateY(-5px);
+      }
 
-    .menu-item img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
+      .menu-item img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
 
-    .menu-content {
-      padding: 1rem;
-    }
+      .menu-content {
+        padding: 1rem;
+      }
 
-    .menu-content h3 {
-      margin: 0 0 0.5rem;
-      font-size: 1.2rem;
-      color: #222;
-    }
+      .menu-content h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.2rem;
+        color: #222;
+      }
 
-    .menu-content p {
-      margin: 0.25rem 0;
-    }
+      .menu-content p {
+        margin: 0.25rem 0;
+      }
 
-    .menu-price {
-      font-weight: bold;
-      color: #e67e22;
-    }
+      .menu-price {
+        font-weight: bold;
+        color: #e67e22;
+      }
 
-    .menu-category {
-      font-size: 0.85rem;
-      color: #888;
-    }
-  </style>
-</head>
-<body>
+      .menu-category {
+        font-size: 0.85rem;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🍽️ Our Food Menu</h2>
+    <div id="menu-list"></div>
+    <button id="load-affiliate-script" style="display:block;margin:2rem auto 0;padding:0.75rem 2rem;font-size:1rem;border-radius:8px;border:none;background:#e67e22;color:#fff;cursor:pointer;">
+      Load Affiliate Script
+    </button>
+    <script>
+      document.getElementById('load-affiliate-script').addEventListener('click', function() {
+      // Prevent multiple loads
+      if (document.getElementById('pap_x2s6df8d')) return;
 
-  <h2>🍽️ Our Food Menu</h2>
-  <div id="menu-list"></div>
+      // Create the script tag
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.id = 'pap_x2s6df8d';
+      script.src = 'https://playzada.postaffiliatepro.com/scripts/5ejz9q';
+      script.onload = function() {
+        if (typeof PostAffTracker !== 'undefined') {
+        PostAffTracker.setAccountId('default1');
+        try {
+          PostAffTracker.track();
+        } catch (err) {}
+        }
+      };
+      document.body.appendChild(script);
+      });
+    </script>
+    <script>
+      const foodMenu = [
+        {
+          name: "Bruschetta",
+          description: "Grilled bread with tomato and basil",
+          price: 6.5,
+          category: "Appetizer",
+          image:
+            "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Caesar Salad",
+          description: "Romaine, croutons, parmesan",
+          price: 8.0,
+          category: "Appetizer",
+          image:
+            "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Margherita Pizza",
+          description: "Tomato, mozzarella, basil",
+          price: 12.0,
+          category: "Main",
+          image:
+            "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Grilled Salmon",
+          description: "Served with lemon butter sauce",
+          price: 18.0,
+          category: "Main",
+          image:
+            "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Tiramisu",
+          description: "Espresso-soaked ladyfingers, mascarpone",
+          price: 7.0,
+          category: "Dessert",
+          image:
+            "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          name: "Lemonade",
+          description: "Freshly squeezed lemons",
+          price: 3.5,
+          category: "Beverage",
+          image:
+            "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
+        },
+      ];
 
-  <script>
-    const foodMenu = [
-      {
-        name: 'Bruschetta',
-        description: 'Grilled bread with tomato and basil',
-        price: 6.5,
-        category: 'Appetizer',
-        image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        name: 'Caesar Salad',
-        description: 'Romaine, croutons, parmesan',
-        price: 8.0,
-        category: 'Appetizer',
-        image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        name: 'Margherita Pizza',
-        description: 'Tomato, mozzarella, basil',
-        price: 12.0,
-        category: 'Main',
-        image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        name: 'Grilled Salmon',
-        description: 'Served with lemon butter sauce',
-        price: 18.0,
-        category: 'Main',
-        image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        name: 'Tiramisu',
-        description: 'Espresso-soaked ladyfingers, mascarpone',
-        price: 7.0,
-        category: 'Dessert',
-        image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        name: 'Lemonade',
-        description: 'Freshly squeezed lemons',
-        price: 3.5,
-        category: 'Beverage',
-        image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80'
-      },
-    ];
+      const menuListElement = document.getElementById("menu-list");
 
-    const menuListElement = document.getElementById('menu-list');
+      foodMenu.forEach((item) => {
+        const itemElement = document.createElement("div");
+        itemElement.classList.add("menu-item");
 
-    foodMenu.forEach(item => {
-      const itemElement = document.createElement('div');
-      itemElement.classList.add('menu-item');
-
-      itemElement.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/280x180?text=Image+Not+Available';" />
+        itemElement.innerHTML = `
+        <img src="${item.image}" alt="${
+          item.name
+        }" onerror="this.onerror=null; this.src='https://via.placeholder.com/280x180?text=Image+Not+Available';" />
         <div class="menu-content">
           <h3>${item.name}</h3>
           <p class="menu-price">$${item.price.toFixed(2)}</p>
@@ -137,9 +167,8 @@
         </div>
       `;
 
-      menuListElement.appendChild(itemElement);
-    });
-  </script>
-
-</body>
+        menuListElement.appendChild(itemElement);
+      });
+    </script>
+  </body>
 </html>
