@@ -3,171 +3,416 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Food Menu</title>
+    <title>Angkor Wat - A Journey Through Time</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body {
-        font-family: "Segoe UI", sans-serif;
-        background-color: #f9f9f9;
-        margin: 0;
-        padding: 2rem;
-        color: #333;
+        font-family: "Inter", sans-serif;
       }
-
-      h2 {
-        text-align: center;
-        margin-bottom: 2rem;
-        color: #444;
+      .font-display {
+        font-family: "Playfair Display", serif;
       }
-
-      #menu-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: center;
+      .hero-bg {
+        background-image: url("https://placehold.co/1600x900/6366F1/FFFFFF?text=Angkor+Wat+Sunrise");
+        background-size: cover;
+        background-position: center;
       }
-
-      .menu-item {
-        background-color: #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        width: 280px;
-        transition: transform 0.2s ease;
-      }
-
-      .menu-item:hover {
-        transform: translateY(-5px);
-      }
-
-      .menu-item img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-      }
-
-      .menu-content {
-        padding: 1rem;
-      }
-
-      .menu-content h3 {
-        margin: 0 0 0.5rem;
-        font-size: 1.2rem;
-        color: #222;
-      }
-
-      .menu-content p {
-        margin: 0.25rem 0;
-      }
-
-      .menu-price {
-        font-weight: bold;
-        color: #e67e22;
-      }
-
-      .menu-category {
-        font-size: 0.85rem;
-        color: #888;
+      .gradient-overlay {
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.7),
+          rgba(0, 0, 0, 0.1)
+        );
       }
     </style>
   </head>
-  <body>
-    <h2>🍽️ Our Food Menu</h2>
-    <div id="menu-list"></div>
-    <button id="load-affiliate-script" style="display:block;margin:2rem auto 0;padding:0.75rem 2rem;font-size:1rem;border-radius:8px;border:none;background:#e67e22;color:#fff;cursor:pointer;">
+  <body class="bg-gray-100 text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-bold text-gray-900 font-display"
+          >Angkor Wat</a
+        >
+        <div class="hidden md:flex space-x-6">
+          <a
+            href="#about"
+            class="text-gray-600 hover:text-indigo-600 transition duration-300"
+            >About</a
+          >
+          <a
+            href="#gallery"
+            class="text-gray-600 hover:text-indigo-600 transition duration-300"
+            >Gallery</a
+          >
+          <a
+            href="#visit"
+            class="text-gray-600 hover:text-indigo-600 transition duration-300"
+            >Plan Your Visit</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-600 hover:text-indigo-600 transition duration-300"
+            >Contact</a
+          >
+        </div>
+        <button id="mobile-menu-button" class="md:hidden flex items-center">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+      </nav>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden">
+        <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-200"
+          >About</a
+        >
+        <a href="#gallery" class="block py-2 px-4 text-sm hover:bg-gray-200"
+          >Gallery</a
+        >
+        <a href="#visit" class="block py-2 px-4 text-sm hover:bg-gray-200"
+          >Plan Your Visit</a
+        >
+        <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-200"
+          >Contact</a
+        >
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen flex items-end">
+      <div class="gradient-overlay w-full h-full flex items-end">
+        <div class="container mx-auto px-6 py-12 text-white text-center">
+          <h1 class="text-5xl md:text-7xl font-bold mb-4 font-display">
+            Discover the Majesty of Angkor Wat
+          </h1>
+          <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">
+            Journey to the heart of the ancient Khmer Empire and explore the
+            largest religious monument in the world.
+          </p>
+          <a
+            href="#about"
+            class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
+            >Explore Now</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold font-display text-gray-900">
+            A Masterpiece of Khmer Architecture
+          </h2>
+          <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+            Angkor Wat, a UNESCO World Heritage site, is a breathtaking temple
+            complex in Cambodia. Originally constructed as a Hindu temple
+            dedicated to the god Vishnu for the Khmer Empire, it was gradually
+            transformed into a Buddhist temple towards the end of the 12th
+            century.
+          </p>
+        </div>
+        <div class="flex flex-wrap -mx-4">
+          <!-- Feature 1 -->
+          <div class="w-full md:w-1/3 px-4 mb-8">
+            <div class="bg-gray-100 p-8 rounded-lg shadow-lg h-full">
+              <h3 class="text-2xl font-bold mb-3 font-display">Symbolism</h3>
+              <p class="text-gray-600">
+                The temple is a representation of Mount Meru, the home of the
+                gods in Hindu mythology. Its five towers symbolize the five
+                peaks of the mountain, and the moat represents the cosmic ocean.
+              </p>
+            </div>
+          </div>
+          <!-- Feature 2 -->
+          <div class="w-full md:w-1/3 px-4 mb-8">
+            <div class="bg-gray-100 p-8 rounded-lg shadow-lg h-full">
+              <h3 class="text-2xl font-bold mb-3 font-display">Bas-Reliefs</h3>
+              <p class="text-gray-600">
+                The temple walls are covered with extensive bas-reliefs,
+                depicting epic stories from Hindu mythology, historical events,
+                and scenes of daily life in the Khmer Empire.
+              </p>
+            </div>
+          </div>
+          <!-- Feature 3 -->
+          <div class="w-full md:w-1/3 px-4 mb-8">
+            <div class="bg-gray-100 p-8 rounded-lg shadow-lg h-full">
+              <h3 class="text-2xl font-bold mb-3 font-display">Construction</h3>
+              <p class="text-gray-600">
+                Built in the early 12th century by King Suryavarman II, the
+                construction of Angkor Wat is estimated to have taken around 30
+                years, involving thousands of artisans and laborers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-4xl font-bold text-center mb-12 font-display text-gray-900"
+        >
+          Moments at Angkor
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <!-- Image 1 -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+          >
+            <img
+              src="https://placehold.co/600x400/818CF8/FFFFFF?text=Reflections"
+              alt="Angkor Wat Reflection"
+              class="w-full h-64 object-cover"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400';"
+            />
+            <div class="p-4">
+              <p class="text-gray-600">
+                Sunrise reflections in the lotus pond.
+              </p>
+            </div>
+          </div>
+          <!-- Image 2 -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+          >
+            <img
+              src="https://placehold.co/600x400/A5B4FC/FFFFFF?text=Carvings"
+              alt="Stone Carvings"
+              class="w-full h-64 object-cover"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400';"
+            />
+            <div class="p-4">
+              <p class="text-gray-600">Intricate Apsara dancer carvings.</p>
+            </div>
+          </div>
+          <!-- Image 3 -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+          >
+            <img
+              src="https://placehold.co/600x400/C7D2FE/FFFFFF?text=Walkways"
+              alt="Ancient Walkways"
+              class="w-full h-64 object-cover"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400';"
+            />
+            <div class="p-4">
+              <p class="text-gray-600">Exploring the ancient stone walkways.</p>
+            </div>
+          </div>
+          <!-- Image 4 -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+          >
+            <img
+              src="https://placehold.co/600x400/6366F1/FFFFFF?text=Central+Towers"
+              alt="Central Towers"
+              class="w-full h-64 object-cover"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400';"
+            />
+            <div class="p-4">
+              <p class="text-gray-600">
+                The iconic central towers against the sky.
+              </p>
+            </div>
+          </div>
+          <!-- Image 5 -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+          >
+            <img
+              src="https://placehold.co/600x400/4F46E5/FFFFFF?text=Monks"
+              alt="Monks at Angkor"
+              class="w-full h-64 object-cover"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400';"
+            />
+            <div class="p-4">
+              <p class="text-gray-600">
+                Saffron-robed monks add a splash of color.
+              </p>
+            </div>
+          </div>
+          <!-- Image 6 -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+          >
+            <img
+              src="https://placehold.co/600x400/312E81/FFFFFF?text=Sunset"
+              alt="Sunset over Angkor"
+              class="w-full h-64 object-cover"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400';"
+            />
+            <div class="p-4">
+              <p class="text-gray-600">Golden hour casting long shadows.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plan Your Visit Section -->
+    <section id="visit" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-4xl font-bold text-center mb-12 font-display text-gray-900"
+        >
+          Plan Your Visit
+        </h2>
+        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+          <div class="bg-gray-100 p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold mb-4 font-display">Getting There</h3>
+            <p class="text-gray-600">
+              Angkor Wat is located just outside of Siem Reap, Cambodia. The
+              city has an international airport with connections to major cities
+              in Asia. From Siem Reap, you can hire a tuk-tuk, car, or bicycle
+              to explore the temple complex.
+            </p>
+          </div>
+          <div class="bg-gray-100 p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold mb-4 font-display">
+              Tickets & Hours
+            </h3>
+            <p class="text-gray-600">
+              The Angkor Archaeological Park is open from 5:00 AM to 6:00 PM.
+              Ticket options include one-day, three-day, and seven-day passes,
+              which can be purchased at the official ticket center.
+            </p>
+          </div>
+          <div class="bg-gray-100 p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold mb-4 font-display">
+              Best Time to Visit
+            </h3>
+            <p class="text-gray-600">
+              The best time to visit is during the dry season, from November to
+              March. Sunrise is a particularly magical time to see the temple,
+              though it can be crowded. Be sure to arrive early.
+            </p>
+          </div>
+          <div class="bg-gray-100 p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold mb-4 font-display">Etiquette</h3>
+            <p class="text-gray-600">
+              As a religious site, visitors are expected to dress modestly. This
+              means covering shoulders and knees. Be respectful of the monks and
+              the sacred nature of the site.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800 text-white">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold mb-4 font-display">Have Questions?</h2>
+        <p class="max-w-2xl mx-auto mb-8">
+          For more information, tour bookings, or inquiries, feel free to get in
+          touch with us.
+        </p>
+        <form class="max-w-xl mx-auto">
+          <div class="flex flex-col md:flex-row gap-4 mb-4">
+            <input
+              type="text"
+              placeholder="Your Name"
+              class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+          <textarea
+            placeholder="Your Message"
+            rows="5"
+            class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          ></textarea>
+          <button
+            type="submit"
+            class="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+      <div class="container mx-auto px-6 text-center">
+        <p>&copy; 2025 Angkor Wat Exploration. All Rights Reserved.</p>
+        <p class="text-sm text-gray-400 mt-2">
+          Designed to inspire your next great adventure.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // JavaScript for mobile menu toggle
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+    <button
+      id="load-affiliate-script"
+      class="fixed bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 z-50"
+    >
       Load Affiliate Script
     </button>
     <script>
-      document.getElementById('load-affiliate-script').addEventListener('click', function() {
-      // Prevent multiple loads
-      if (document.getElementById('pap_x2s6df8d')) return;
+      document.getElementById("load-affiliate-script").addEventListener("click", function () {
+        // Prevent multiple loads
+        if (document.getElementById("pap_x2s6df8d")) return;
 
-      // Create the script tag
-      var script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.id = 'pap_x2s6df8d';
-      script.src = 'https://playzada.postaffiliatepro.com/scripts/5ejz9q';
-      script.onload = function() {
-        if (typeof PostAffTracker !== 'undefined') {
-        PostAffTracker.setAccountId('default1');
-        try {
-          PostAffTracker.track();
-        } catch (err) {}
-        }
-      };
-      document.body.appendChild(script);
-      });
-    </script>
-    <script>
-      const foodMenu = [
-        {
-          name: "Bruschetta",
-          description: "Grilled bread with tomato and basil",
-          price: 6.5,
-          category: "Appetizer",
-          image:
-            "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
-        },
-        {
-          name: "Caesar Salad",
-          description: "Romaine, croutons, parmesan",
-          price: 8.0,
-          category: "Appetizer",
-          image:
-            "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
-        },
-        {
-          name: "Margherita Pizza",
-          description: "Tomato, mozzarella, basil",
-          price: 12.0,
-          category: "Main",
-          image:
-            "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
-        },
-        {
-          name: "Grilled Salmon",
-          description: "Served with lemon butter sauce",
-          price: 18.0,
-          category: "Main",
-          image:
-            "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
-        },
-        {
-          name: "Tiramisu",
-          description: "Espresso-soaked ladyfingers, mascarpone",
-          price: 7.0,
-          category: "Dessert",
-          image:
-            "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
-        },
-        {
-          name: "Lemonade",
-          description: "Freshly squeezed lemons",
-          price: 3.5,
-          category: "Beverage",
-          image:
-            "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
-        },
-      ];
-
-      const menuListElement = document.getElementById("menu-list");
-
-      foodMenu.forEach((item) => {
-        const itemElement = document.createElement("div");
-        itemElement.classList.add("menu-item");
-
-        itemElement.innerHTML = `
-        <img src="${item.image}" alt="${
-          item.name
-        }" onerror="this.onerror=null; this.src='https://via.placeholder.com/280x180?text=Image+Not+Available';" />
-        <div class="menu-content">
-          <h3>${item.name}</h3>
-          <p class="menu-price">$${item.price.toFixed(2)}</p>
-          <p class="menu-category">${item.category}</p>
-          <p>${item.description}</p>
-        </div>
-      `;
-
-        menuListElement.appendChild(itemElement);
+        // Load external script
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.id = "pap_x2s6df8d";
+        s.src = "https://playzada.postaffiliatepro.com/scripts/5ejz9q";
+        s.onload = function () {
+          if (typeof PostAffTracker !== "undefined") {
+            PostAffTracker.setAccountId("default1");
+            try {
+              PostAffTracker.track();
+            } catch (err) {}
+          }
+        };
+        document.body.appendChild(s);
       });
     </script>
   </body>
