@@ -30,58 +30,11 @@
           rgba(0, 0, 0, 0.1)
         );
       }
-      
-      /* Loading animation for affiliate tracking */
-      .tracking-status {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        color: white;
-        padding: 10px 15px;
-        border-radius: 5px;
-        font-size: 12px;
-        z-index: 1000;
-        display: none;
-      }
-      
-      /* Enhanced button animations */
-      .cta-button {
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease;
-      }
-      
-      .cta-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      }
-      
-      .cta-button::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: left 0.5s;
-      }
-      
-      .cta-button:hover::before {
-        left: 100%;
-      }
     </style>
   </head>
   <body class="bg-gray-100 text-gray-800">
-    <!-- Tracking Status Indicator -->
-    <div id="tracking-status" class="tracking-status">
-      <span id="tracking-message">Initializing tracking...</span>
-    </div>
-
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
-      <button class="px-4 absolute top-2 left-2 text-gray-200 rounded-full bg-green-500 text-[30px]"><a href="./test2.html">TEST2</a></button>
       <nav
         class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
@@ -92,25 +45,21 @@
           <a
             href="#about"
             class="text-gray-600 hover:text-indigo-600 transition duration-300"
-            onclick="trackEvent('navigation', 'about')"
             >About</a
           >
           <a
             href="#gallery"
             class="text-gray-600 hover:text-indigo-600 transition duration-300"
-            onclick="trackEvent('navigation', 'gallery')"
             >Gallery</a
           >
           <a
             href="#visit"
             class="text-gray-600 hover:text-indigo-600 transition duration-300"
-            onclick="trackEvent('navigation', 'visit')"
             >Plan Your Visit</a
           >
           <a
             href="#contact"
             class="text-gray-600 hover:text-indigo-600 transition duration-300"
-            onclick="trackEvent('navigation', 'contact')"
             >Contact</a
           >
         </div>
@@ -133,16 +82,16 @@
       </nav>
       <!-- Mobile Menu -->
       <div id="mobile-menu" class="hidden md:hidden">
-        <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-200" onclick="trackEvent('navigation', 'about_mobile')"
+        <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-200"
           >About</a
         >
-        <a href="#gallery" class="block py-2 px-4 text-sm hover:bg-gray-200" onclick="trackEvent('navigation', 'gallery_mobile')"
+        <a href="#gallery" class="block py-2 px-4 text-sm hover:bg-gray-200"
           >Gallery</a
         >
-        <a href="#visit" class="block py-2 px-4 text-sm hover:bg-gray-200" onclick="trackEvent('navigation', 'visit_mobile')"
+        <a href="#visit" class="block py-2 px-4 text-sm hover:bg-gray-200"
           >Plan Your Visit</a
         >
-        <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-200" onclick="trackEvent('navigation', 'contact_mobile')"
+        <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-200"
           >Contact</a
         >
       </div>
@@ -161,8 +110,7 @@
           </p>
           <a
             href="#about"
-            class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out inline-block"
-            onclick="trackEvent('cta', 'hero_explore')"
+            class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
             >Explore Now</a
           >
         </div>
@@ -187,7 +135,7 @@
         <div class="flex flex-wrap -mx-4">
           <!-- Feature 1 -->
           <div class="w-full md:w-1/3 px-4 mb-8">
-            <div class="bg-gray-100 p-8 rounded-lg shadow-lg h-full transform hover:scale-105 transition duration-300">
+            <div class="bg-gray-100 p-8 rounded-lg shadow-lg h-full">
               <h3 class="text-2xl font-bold mb-3 font-display">Symbolism</h3>
               <p class="text-gray-600">
                 The temple is a representation of Mount Meru, the home of the
@@ -198,7 +146,7 @@
           </div>
           <!-- Feature 2 -->
           <div class="w-full md:w-1/3 px-4 mb-8">
-            <div class="bg-gray-100 p-8 rounded-lg shadow-lg h-full transform hover:scale-105 transition duration-300">
+            <div class="bg-gray-100 p-8 rounded-lg shadow-lg h-full">
               <h3 class="text-2xl font-bold mb-3 font-display">Bas-Reliefs</h3>
               <p class="text-gray-600">
                 The temple walls are covered with extensive bas-reliefs,
@@ -209,7 +157,7 @@
           </div>
           <!-- Feature 3 -->
           <div class="w-full md:w-1/3 px-4 mb-8">
-            <div class="bg-gray-100 p-8 rounded-lg shadow-lg h-full transform hover:scale-105 transition duration-300">
+            <div class="bg-gray-100 p-8 rounded-lg shadow-lg h-full">
               <h3 class="text-2xl font-bold mb-3 font-display">Construction</h3>
               <p class="text-gray-600">
                 Built in the early 12th century by King Suryavarman II, the
@@ -233,8 +181,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <!-- Image 1 -->
           <div
-            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 cursor-pointer"
-            onclick="trackEvent('gallery', 'reflection_view')"
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
           >
             <img
               src="https://placehold.co/600x400/818CF8/FFFFFF?text=Reflections"
@@ -250,8 +197,7 @@
           </div>
           <!-- Image 2 -->
           <div
-            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 cursor-pointer"
-            onclick="trackEvent('gallery', 'carvings_view')"
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
           >
             <img
               src="https://placehold.co/600x400/A5B4FC/FFFFFF?text=Carvings"
@@ -265,8 +211,7 @@
           </div>
           <!-- Image 3 -->
           <div
-            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 cursor-pointer"
-            onclick="trackEvent('gallery', 'walkways_view')"
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
           >
             <img
               src="https://placehold.co/600x400/C7D2FE/FFFFFF?text=Walkways"
@@ -280,8 +225,7 @@
           </div>
           <!-- Image 4 -->
           <div
-            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 cursor-pointer"
-            onclick="trackEvent('gallery', 'towers_view')"
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
           >
             <img
               src="https://placehold.co/600x400/6366F1/FFFFFF?text=Central+Towers"
@@ -297,8 +241,7 @@
           </div>
           <!-- Image 5 -->
           <div
-            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 cursor-pointer"
-            onclick="trackEvent('gallery', 'monks_view')"
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
           >
             <img
               src="https://placehold.co/600x400/4F46E5/FFFFFF?text=Monks"
@@ -314,8 +257,7 @@
           </div>
           <!-- Image 6 -->
           <div
-            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 cursor-pointer"
-            onclick="trackEvent('gallery', 'sunset_view')"
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
           >
             <img
               src="https://placehold.co/600x400/312E81/FFFFFF?text=Sunset"
@@ -340,66 +282,42 @@
           Plan Your Visit
         </h2>
         <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-          <div class="bg-gray-100 p-8 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+          <div class="bg-gray-100 p-8 rounded-lg shadow-lg">
             <h3 class="text-2xl font-bold mb-4 font-display">Getting There</h3>
-            <p class="text-gray-600 mb-4">
+            <p class="text-gray-600">
               Angkor Wat is located just outside of Siem Reap, Cambodia. The
               city has an international airport with connections to major cities
               in Asia. From Siem Reap, you can hire a tuk-tuk, car, or bicycle
               to explore the temple complex.
             </p>
-            <button 
-              class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out"
-              onclick="trackEvent('cta', 'book_transport')"
-            >
-              Book Transport
-            </button>
           </div>
-          <div class="bg-gray-100 p-8 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+          <div class="bg-gray-100 p-8 rounded-lg shadow-lg">
             <h3 class="text-2xl font-bold mb-4 font-display">
               Tickets & Hours
             </h3>
-            <p class="text-gray-600 mb-4">
+            <p class="text-gray-600">
               The Angkor Archaeological Park is open from 5:00 AM to 6:00 PM.
               Ticket options include one-day, three-day, and seven-day passes,
               which can be purchased at the official ticket center.
             </p>
-            <button 
-              class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out"
-              onclick="trackEvent('cta', 'buy_tickets')"
-            >
-              Buy Tickets
-            </button>
           </div>
-          <div class="bg-gray-100 p-8 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+          <div class="bg-gray-100 p-8 rounded-lg shadow-lg">
             <h3 class="text-2xl font-bold mb-4 font-display">
               Best Time to Visit
             </h3>
-            <p class="text-gray-600 mb-4">
+            <p class="text-gray-600">
               The best time to visit is during the dry season, from November to
               March. Sunrise is a particularly magical time to see the temple,
               though it can be crowded. Be sure to arrive early.
             </p>
-            <button 
-              class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out"
-              onclick="trackEvent('cta', 'plan_trip')"
-            >
-              Plan Trip
-            </button>
           </div>
-          <div class="bg-gray-100 p-8 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+          <div class="bg-gray-100 p-8 rounded-lg shadow-lg">
             <h3 class="text-2xl font-bold mb-4 font-display">Etiquette</h3>
-            <p class="text-gray-600 mb-4">
+            <p class="text-gray-600">
               As a religious site, visitors are expected to dress modestly. This
               means covering shoulders and knees. Be respectful of the monks and
               the sacred nature of the site.
             </p>
-            <button 
-              class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out"
-              onclick="trackEvent('cta', 'learn_etiquette')"
-            >
-              Learn More
-            </button>
           </div>
         </div>
       </div>
@@ -413,33 +331,27 @@
           For more information, tour bookings, or inquiries, feel free to get in
           touch with us.
         </p>
-        <form class="max-w-xl mx-auto" onsubmit="handleFormSubmit(event)">
+        <form class="max-w-xl mx-auto">
           <div class="flex flex-col md:flex-row gap-4 mb-4">
             <input
               type="text"
-              name="name"
               placeholder="Your Name"
-              required
               class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <input
               type="email"
-              name="email"
               placeholder="Your Email"
-              required
               class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
           <textarea
-            name="message"
             placeholder="Your Message"
             rows="5"
-            required
-            class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-4"
+            class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           ></textarea>
           <button
             type="submit"
-            class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out"
+            class="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
           >
             Send Message
           </button>
@@ -454,217 +366,44 @@
         <p class="text-sm text-gray-400 mt-2">
           Designed to inspire your next great adventure.
         </p>
-        <div class="mt-4 text-xs text-gray-500">
-          <span id="visitor-info"></span>
-        </div>
       </div>
     </footer>
 
-    <!-- PostAffiliate Pro Tracking Scripts -->
-    <script
-      type="text/javascript"
-      id="pap_x2s6df8d"
-      src="https://hongfi.postaffiliatepro.com/scripts/av5ouj7kw55"
-    ></script>
-    
-    <!-- Enhanced Tracking Implementation -->
-    <script type="text/javascript">
-      // Global tracking state
-      let trackingState = {
-        initialized: false,
-        affiliateId: null,
-        visitorId: null,
-        sessionData: {
-          pageViews: 0,
-          timeOnSite: Date.now(),
-          interactions: []
-        }
-      };
-
-      // Initialize PostAffiliate Pro tracking
-      function initializeTracking() {
-        try {
-          // Show tracking status
-          showTrackingStatus('Initializing affiliate tracking...');
-          
-          // Set up PostAffiliate Pro
-          PostAffTracker.setAccountId('default1');
-          
-          // Enable advanced tracking features
-          PostAffTracker.setCookieDomain(window.location.hostname);
-          
-          // Force specific campaign/channel data if needed
-          // Uncomment and modify these lines based on your campaigns
-          // window.CampaignID = 'angkor-wat-tourism';
-          // window.Channel = 'website-direct';
-          // window.Data1 = 'cambodia-travel';
-          // window.Data2 = 'heritage-sites';
-          
-          // Track the initial page load
-          PostAffTracker.track();
-          
-          // Get affiliate information asynchronously
-          PostAffTracker.getAffInfo().call(function() {
-            trackingState.affiliateId = PostAffTracker.getAffInfo().getAffiliateId();
-            if (trackingState.affiliateId) {
-              showTrackingStatus('Affiliate tracking active: ' + trackingState.affiliateId);
-              console.log('Tracking affiliate:', trackingState.affiliateId);
-            } else {
-              showTrackingStatus('Direct visitor - no affiliate');
-            }
-          });
-          
-          // Get visitor ID
-          PostAffTracker.executeOnResponseFinished.push(function() {
-            trackingState.visitorId = PostAffTracker.getVisitorId();
-            if (trackingState.visitorId) {
-              document.getElementById('visitor-info').textContent = 
-                'Visitor ID: ' + trackingState.visitorId.substring(0, 8) + '...';
-            }
-          });
-          
-          trackingState.initialized = true;
-          setTimeout(() => hideTrackingStatus(), 3000);
-          
-        } catch (err) {
-          console.error('Tracking initialization failed:', err);
-          showTrackingStatus('Tracking failed - running in fallback mode');
-          setTimeout(() => hideTrackingStatus(), 5000);
-        }
-      }
-
-      // Custom event tracking function
-      function trackEvent(category, action, label = null) {
-        // Store interaction for analytics
-        trackingState.sessionData.interactions.push({
-          category: category,
-          action: action,
-          label: label,
-          timestamp: Date.now()
-        });
-        
-        // Log for debugging
-        console.log('Event tracked:', { category, action, label });
-        
-        // You can extend this to send custom events to your analytics
-        // or to PostAffiliate Pro via API if needed
-        
-        // Show brief feedback
-        showTrackingStatus(`Event: ${category} - ${action}`, 1000);
-      }
-
-      // Form submission handler with tracking
-      function handleFormSubmit(event) {
-        event.preventDefault();
-        
-        const formData = new FormData(event.target);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
-        
-        // Track the form submission
-        trackEvent('form', 'contact_submit', 'contact_form');
-        
-        // Here you would normally send the data to your server
-        // For demo purposes, we'll just show a success message
-        showTrackingStatus('Message sent successfully!', 3000);
-        
-        // Reset form
-        event.target.reset();
-        
-        // Optional: Track as a conversion if this is a valuable action
-        // You can implement sale tracking here if needed
-        // PostAffTracker.trackSale(totalCost, orderID, productID, additionalData);
-      }
-
-      // Tracking status display functions
-      function showTrackingStatus(message, duration = null) {
-        const statusEl = document.getElementById('tracking-status');
-        const messageEl = document.getElementById('tracking-message');
-        
-        messageEl.textContent = message;
-        statusEl.style.display = 'block';
-        
-        if (duration) {
-          setTimeout(() => hideTrackingStatus(), duration);
-        }
-      }
-
-      function hideTrackingStatus() {
-        const statusEl = document.getElementById('tracking-status');
-        statusEl.style.display = 'none';
-      }
-
-      // Page analytics
-      function trackPageAnalytics() {
-        trackingState.sessionData.pageViews++;
-        
-        // Track scroll depth
-        let maxScroll = 0;
-        window.addEventListener('scroll', function() {
-          const scrollPercent = Math.round(
-            (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
-          );
-          if (scrollPercent > maxScroll) {
-            maxScroll = scrollPercent;
-            
-            // Track milestone scrolls
-            if (scrollPercent >= 25 && maxScroll < 25) {
-              trackEvent('engagement', 'scroll_25_percent');
-            } else if (scrollPercent >= 50 && maxScroll < 50) {
-              trackEvent('engagement', 'scroll_50_percent');
-            } else if (scrollPercent >= 75 && maxScroll < 75) {
-              trackEvent('engagement', 'scroll_75_percent');
-            } else if (scrollPercent >= 90 && maxScroll < 90) {
-              trackEvent('engagement', 'scroll_complete');
-            }
-          }
-        });
-
-        // Track time on page
-        window.addEventListener('beforeunload', function() {
-          const timeOnSite = Math.round((Date.now() - trackingState.sessionData.timeOnSite) / 1000);
-          console.log('Session summary:', {
-            timeOnSite: timeOnSite + ' seconds',
-            pageViews: trackingState.sessionData.pageViews,
-            interactions: trackingState.sessionData.interactions.length,
-            affiliateId: trackingState.affiliateId
-          });
-        });
-      }
-
+    <script>
       // JavaScript for mobile menu toggle
       const mobileMenuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");
 
       mobileMenuButton.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
-        trackEvent('navigation', 'mobile_menu_toggle');
       });
 
       // Smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
-          const targetId = this.getAttribute("href").substring(1);
-          document.getElementById(targetId).scrollIntoView({
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
             behavior: "smooth",
           });
-          trackEvent('navigation', 'smooth_scroll', targetId);
         });
       });
-
-      // Initialize everything when page loads
-      document.addEventListener('DOMContentLoaded', function() {
-        // Initialize tracking
-        initializeTracking();
-        
-        // Set up page analytics
-        trackPageAnalytics();
-        
-        // Track initial page load
-        trackEvent('page', 'page_load', window.location.pathname);
-      });
+    </script>
+    <button
+      id="load-affiliate-script"
+      class="fixed bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 z-50"
+    >
+      Load Affiliate Script
+    </button>
+    <script
+      type="text/javascript"
+      id="pap_x2s6df8d"
+      src="https://hongfi.postaffiliatepro.com/scripts/av5ouj7kw55"
+    ></script>
+    <script type="text/javascript">
+      PostAffTracker.setAccountId("default1");
+      try {
+        PostAffTracker.track();
+      } catch (err) {}
     </script>
   </body>
 </html>
