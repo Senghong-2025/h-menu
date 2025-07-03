@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PAP Click Tracking Setup</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .code-block {
+        background: #f4f4f4;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+      .example-link {
+        display: inline-block;
+        background: #007cba;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 4px;
+        margin: 10px 5px;
+      }
+      .example-link:hover {
+        background: #005a87;
+      }
+      .section {
+        margin: 30px 0;
+        padding: 20px;
+        border-left: 4px solid #007cba;
+        background: #f9f9f9;
+      }
+      h2 {
+        color: #333;
+        border-bottom: 2px solid #007cba;
+        padding-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- PAP Tracking Script (Your existing setup) -->
+    <script
+      type="text/javascript"
+      id="pap_x2s6df8d"
+      src="https://hongfi.postaffiliatepro.com/scripts/av5ouj7kw55"
+    ></script>
+    <script type="text/javascript">
+      PostAffTracker.setAccountId("default1");
+      try {
+        PostAffTracker.track();
+      } catch (err) {}
+    </script>
+
+    <h1>PAP Click Tracking Implementation Guide</h1>
+
+    <div class="section">
+      <h2>Method 1: Direct Link Tracking</h2>
+      <p>For simple link tracking, you can track clicks directly on links:</p>
+      <div class="code-block">
+        &lt;a href="https://example.com/product"
+        onclick="trackClick('product-link')"&gt; Product Link &lt;/a&gt;
+      </div>
+
+      <h3>Example Links:</h3>
+      <a
+        href="#"
+        class="example-link"
+        onclick="trackClick('header-cta'); return false;"
+      >
+        Header CTA Button
+      </a>
+      <a
+        href="#"
+        class="example-link"
+        onclick="trackClick('sidebar-banner'); return false;"
+      >
+        Sidebar Banner
+      </a>
+      <a
+        href="#"
+        class="example-link"
+        onclick="trackClick('footer-link'); return false;"
+      >
+        Footer Link
+      </a>
+    </div>
+
+    <div class="section">
+      <h2>Method 2: Event-Based Tracking</h2>
+      <p>For more advanced tracking, you can use event listeners:</p>
+      <div class="code-block">
+        // Track all buttons with class 'track-click'
+        document.querySelectorAll('.track-click').forEach(button => {
+        button.addEventListener('click', function(e) { const actionName =
+        this.getAttribute('data-action') || 'button-click';
+        trackClick(actionName); }); });
+      </div>
+
+      <button class="example-link track-click" data-action="demo-button">
+        Demo Button (Event Tracked)
+      </button>
+    </div>
+
+    <div class="section">
+      <h2>Method 3: Form Submission Tracking</h2>
+      <p>Track form submissions:</p>
+      <div class="code-block">
+        &lt;form onsubmit="trackClick('form-submit')"&gt; &lt;input type="email"
+        placeholder="Enter email"&gt; &lt;button
+        type="submit"&gt;Subscribe&lt;/button&gt; &lt;/form&gt;
+      </div>
+
+      <form
+        onsubmit="trackClick('newsletter-signup'); return false;"
+        style="margin-top: 15px"
+      >
+        <input
+          type="email"
+          placeholder="Enter your email"
+          style="padding: 8px; margin-right: 10px"
+        />
+        <button
+          type="submit"
+          class="example-link"
+          style="border: none; cursor: pointer"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+
+    <div class="section">
+      <h2>Tracking Function Implementation</h2>
+      <div class="code-block" id="tracking-code">
+        // Basic click tracking function function trackClick(actionName,
+        additionalData = {}) { try { // Method 1: Using PostAffTracker (if
+        available) if (typeof PostAffTracker !== 'undefined') {
+        PostAffTracker.track({ action: actionName, ...additionalData }); } //
+        Method 2: Custom tracking call // You might need to adjust this based on
+        your PAP setup var trackingUrl =
+        'https://hongfi.postaffiliatepro.com/scripts/click.php'; var params =
+        new URLSearchParams({ action: actionName, account: 'default1',
+        ...additionalData }); // Send tracking request fetch(trackingUrl + '?' +
+        params.toString(), { method: 'GET', mode: 'no-cors' });
+        console.log('Tracked click:', actionName, additionalData); } catch
+        (error) { console.error('Click tracking error:', error); } } //
+        Alternative: Track with custom data function
+        trackClickWithData(actionName, customData) { trackClick(actionName, {
+        custom_field_1: customData.productId || '', custom_field_2:
+        customData.category || '', custom_field_3: customData.value || '' }); }
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Advanced: Automatic Click Tracking</h2>
+      <p>Automatically track all outbound links:</p>
+      <div class="code-block">
+        // Automatically track all external links
+        document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', function(e) { const href =
+        this.getAttribute('href'); // Check if it's an external link if
+        (href.startsWith('http') && !href.includes(window.location.hostname)) {
+        trackClick('external-link', { url: href, text: this.textContent.trim()
+        }); } }); }); });
+      </div>
+    </div>
+
+    <script>
+      // Tracking function implementation
+      function trackClick(actionName, additionalData = {}) {
+        try {
+          // Show visual feedback
+          const feedback = document.createElement("div");
+          feedback.textContent = `Tracked: ${actionName}`;
+          feedback.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #4CAF50;
+                    color: white;
+                    padding: 10px 15px;
+                    border-radius: 4px;
+                    z-index: 1000;
+                    font-size: 14px;
+                `;
+          document.body.appendChild(feedback);
+
+          setTimeout(() => {
+            feedback.remove();
+          }, 2000);
+
+          // Your actual PAP tracking code would go here
+          if (typeof PostAffTracker !== "undefined") {
+            // PostAffTracker.track({ action: actionName, ...additionalData });
+          }
+
+          console.log("Tracked click:", actionName, additionalData);
+        } catch (error) {
+          console.error("Click tracking error:", error);
+        }
+      }
+
+      // Track with custom data
+      function trackClickWithData(actionName, customData) {
+        trackClick(actionName, customData);
+      }
+
+      // Auto-track setup
+      document.addEventListener("DOMContentLoaded", function () {
+        // Track buttons with track-click class
+        document.querySelectorAll(".track-click").forEach((button) => {
+          button.addEventListener("click", function (e) {
+            const actionName =
+              this.getAttribute("data-action") || "button-click";
+            trackClick(actionName);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
