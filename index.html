@@ -388,35 +388,6 @@
         });
       });
     </script>
-    <button
-      id="load-affiliate-script"
-      class="fixed bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 z-50"
-    >
-      Load Affiliate Script
-    </button>
-    <script>
-      document
-        .getElementById("load-affiliate-script")
-        .addEventListener("click", function () {
-          // Prevent multiple loads
-          if (document.getElementById("pap_x2s6df8d")) return;
-
-          // Load external script
-          var s = document.createElement("script");
-          s.type = "text/javascript";
-          s.id = "pap_x2s6df8d";
-          s.src = "https://hongfi.postaffiliatepro.com/scripts/av5ouj7kw55";
-          s.onload = function () {
-            if (typeof PostAffTracker !== "undefined") {
-              PostAffTracker.setAccountId("default1");
-              try {
-                PostAffTracker.track();
-              } catch (err) {}
-            }
-          };
-          document.body.appendChild(s);
-        });
-    </script>
     <script
       type="text/javascript"
       id="pap_x2s6df8d"
